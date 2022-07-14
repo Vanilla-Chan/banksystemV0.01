@@ -56,6 +56,6 @@ private:
 //  map<int,Benutzer> Kunden;
  // map<int,Konto> Konten;
  // map<int,Transaktion> Transaktionen;
- // map<int,Vorgang> Vorgaenge;
+ // test map<int,Vorgang> Vorgaenge;
 };
 #endif

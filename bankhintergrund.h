@@ -4,6 +4,8 @@
 #define BANKHINTERGRUND_H_
 #include <string>
 #include <vector>
+
+
 class Benutzer{
 private:
   int benutzerID;
@@ -20,6 +22,8 @@ public:
   std::string getAdresse();
   std::string getGeburtsdatum();
 };
+
+
 class Konto{
 private:
   int kontonummer;
@@ -32,6 +36,8 @@ public:
   float getkontostand();
   void setKontostand(float iKontostand);
 };
+
+
 class Transaktion{
 private:
   int sendkontoID;
@@ -41,8 +47,10 @@ private:
 public:
   void ueberweisung(Konto& sender, Konto& empfaenger, float betrag);
   void auszahlen(Konto&, float betrag);
-  void einzahlen(Konto&,float betrag);
+  void einzahlen(Konto&, float betrag);
 };
+
+
 class Banksystem{
 private:
   map<int,Benutzer> Kunden;

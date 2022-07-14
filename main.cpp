@@ -9,12 +9,12 @@ using namespace std;
 int main(){
 
 	Banksystem BS;
-	BS.ladeBenutzerInMap(Benutzer("x","x","x","x","x"));
+	BS.ladeBenutzerInMap(Benutzer(1,"jakob","hermanowski","110","berg.1","20.04.1997"));
 	BS.speichereBenutzerInDatei();
 
 
 
-	cout << mainmenu();
+	//cout << mainmenu();
 
 
 }

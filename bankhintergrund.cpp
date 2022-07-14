@@ -1,12 +1,13 @@
 #include "bankhintergrund.h"
 #include <iostream>
 #include <fstream>
+#include <string.h>
 
-using namespace std;
-Benutzer::Benutzer(std::string iName, std::string iNachname,
+Benutzer::Benutzer(int ID, std::string iName, std::string iNachname,
 		std::string iTelefonnummer, std::string iAdresse,
 		std::string iGeburtsdatum) {
-	this->nachname = iName;
+	this->benutzerID = ID;
+	this->vorname = iName;
 	this->nachname = iNachname;
 	this->telefonnummer = iTelefonnummer;
 	this->adresse = iAdresse;
@@ -52,15 +53,16 @@ void Banksystem::speichereBenutzerInDatei() {
 		cout << "date konnte nicht geoeffnet werden!" << endl;
 	}
 	else{
-		for(long long unsigned int a = 0; a < this->mBenutzer.size(); a++){
-			//ueberpruefen ob Nutzer geloescht ist
-			if(mBenutzer.at(a).getVorname() != ""){
+		for(long long unsigned int a = 1; a < this->mBenutzer.size()+1; a++){
 
-				outFile << mBenutzer.at(a).getID() << "";
-				outFile << mBenutzer.at(a).getVorname() << "";
-				outFile << mBenutzer.at(a).getNachname() << "";
-				outFile << mBenutzer.at(a).getTelefonnummer() << "";
-				outFile << mBenutzer.at(a).getAdresse() << "";
+			//ueberpruefen ob Nutzer geloescht ist
+
+			if(mBenutzer.at(a).getAdresse() != ""){
+				outFile << mBenutzer.at(a).getID() << " ";
+				outFile << mBenutzer.at(a).getVorname() << " ";
+				outFile << mBenutzer.at(a).getNachname() << " ";
+				outFile << mBenutzer.at(a).getTelefonnummer() << " ";
+				outFile << mBenutzer.at(a).getAdresse() << " ";
 				outFile << mBenutzer.at(a).getGeburtsdatum();
 
 			}else{}

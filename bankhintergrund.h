@@ -4,6 +4,10 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <utility>
+
+
+using namespace std;
 
 
 class Benutzer{
@@ -15,7 +19,7 @@ private:
   std::string adresse;
   std::string geburtsdatum;
 public:
-  Benutzer(std::string iName, std::string iNachname,std::string iTelefonnummer,std::string iAdresse, std::string iGeburtsdatum);
+  Benutzer(int ID, std::string iName, std::string iNachname,std::string iTelefonnummer,std::string iAdresse, std::string iGeburtsdatum);
   int getID();
   std::string getVorname();
   std::string getNachname();

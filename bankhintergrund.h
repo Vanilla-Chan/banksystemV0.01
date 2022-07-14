@@ -21,7 +21,11 @@ class Konto{
   float kontostand;
 
 };
-class Ueberweisugn{};
+class Ueberweisugn{
+
+public:
+
+};
 class Banksystem{
 private:
   vector<Benutzer> USER;

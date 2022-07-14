@@ -53,8 +53,16 @@ public:
 
 class Banksystem{
 private:
-std::map<int,Benutzer> Kunden;
-std::map<int,Konto> Konten;
-std::map<int,Transaktion> Transaktionen;
+	std::map<int,Benutzer> Kunden;
+	std::map<int,Konto> Konten;
+	std::map<int,Transaktion> Transaktionen;
+public:
+	void ladeBenutzerAusDatei();
+	void ladeKontosAusDatei();
+	void ladeTransaktionenAusDatei();
+	void speichereBenutzerInDatei();
+	void speichereKontosInDatei();
+	void speichereTransaktionenInDatei();
+
 };
 #endif

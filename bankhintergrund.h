@@ -12,20 +12,26 @@ private:
   std::string telefonnummer;
   std::string adresse;
   std::string geburtsdatum;
-
+public:
+  Benutzer();
 };
-
 class Konto{
+private:
   int kontonummer;
   int benutzerID;
   float kontostand;
-
 };
-class Ueberweisugn{};
+class Ueberweisung{
+private:
+  int sendkontoID;
+  int empfkontoID;
+  float betrag;
+  std::string verwendungszweck;
+};
 class Banksystem{
 private:
-  vector<Benutzer> USER;
-  vector<Konto> KONTEN;
-
+  vector<Benutzer> Kunden;
+  vector<Konto> Konten;
+  vector<Ueberweisung> Ueberweisungen;
 };
 #endif

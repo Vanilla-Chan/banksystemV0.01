@@ -15,7 +15,7 @@ private:
   std::string adresse;
   std::string geburtsdatum;
 public:
-  Benutzer(std::string iName, std::string iNachname,std::string iTelefonnummer,std::string iAdresse, std::String iGeburtsdatum);
+  Benutzer(std::string iName, std::string iNachname,std::string iTelefonnummer,std::string iAdresse, std::string iGeburtsdatum);
   std::string getVorname();
   std::string getNachname();
   std::string getTelefonnummer();
@@ -53,9 +53,9 @@ public:
 
 class Banksystem{
 private:
-  map<int,Benutzer> Kunden;
-  map<int,Konto> Konten;
-  map<int,Transaktion> Transaktionen;
-  map<int,Vorgang> Vorgaenge;
+//  map<int,Benutzer> Kunden;
+ // map<int,Konto> Konten;
+ // map<int,Transaktion> Transaktionen;
+ // map<int,Vorgang> Vorgaenge;
 };
 #endif

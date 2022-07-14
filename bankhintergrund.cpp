@@ -33,8 +33,8 @@ std::string Benutzer::getGeburtsdatum() {
     return this->geburtsdatum;
 }
 
-void Banksystem::ladeBenutzerVonDatei() {
-}
+//void Banksystem::ladeBenutzerVonDatei() {
+//}
 
 void Banksystem::speichereBenutzerInDatei() {
 }

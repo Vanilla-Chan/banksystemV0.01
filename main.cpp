@@ -2,15 +2,20 @@
 #include "bankhintergrund.h"
 #include <stdlib.h>
 #include <cstdlib>
+#include "frontend.h"
 using namespace std;
-int mainmenu();
-void adminmenu();
-int login();
+
+
 int main(){
 	cout << mainmenu();
+
+
 }
 
-int  mainmenu(){
+/*
+ * Original Implementation of Frontend
+ *
+ * int  mainmenu(){
 	int eingabe;
 	bool check = true;
 	do{
@@ -71,4 +76,4 @@ int login(){
 	 exit(1);
 	 return status;
 
-}
+}*/

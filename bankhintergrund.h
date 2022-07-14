@@ -5,7 +5,6 @@
 #include <vector>
 #include <map>
 
-
 class Benutzer{
 private:
   int benutzerID;

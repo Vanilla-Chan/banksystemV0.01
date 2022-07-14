@@ -1,17 +1,15 @@
 #include <iostream>
 #include "bankhintergrund.h"
+#include "frontend.h"
 #include <stdlib.h>
 #include <cstdlib>
-#include "frontend.h"
+
 using namespace std;
 
 
 int main(){
 	cout << mainmenu();
-
-
 }
-
 /*
  * Original Implementation of Frontend
  *

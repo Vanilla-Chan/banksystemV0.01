@@ -43,6 +43,7 @@ void Banksystem::ladeBenutzerAusDatei() {
 
 }
 
+
 void Banksystem::speichereBenutzerInDatei() {
 
 	ofstream outFile;

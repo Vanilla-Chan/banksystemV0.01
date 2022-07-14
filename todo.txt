@@ -1,0 +1,18 @@
+To Do Liste:
+
+Teilnehmer 
+
+Offene ToDos:
+
+Implementationsdatei bankhintergrund.cpp 
+Main Menu konzipieren und implementieren in eigener Methode 
+Admin Menu 
+Daten Einlesen aus Dateien und die Container damit füttern
+
+Daten in Dateien Ausgeben zum Speichern 
+Jakob 
+
+
+
+Julian 
+Frontend Main und Adminmenü

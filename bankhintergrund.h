@@ -4,6 +4,7 @@
 #define BANKHINTERGRUND_H_
 #include <string>
 #include <vector>
+#include <map>
 
 
 class Benutzer{
@@ -53,9 +54,8 @@ public:
 
 class Banksystem{
 private:
-//  map<int,Benutzer> Kunden;
- // map<int,Konto> Konten;
- // map<int,Transaktion> Transaktionen;
- // test map<int,Vorgang> Vorgaenge;
+std::map<int,Benutzer> Kunden;
+std::map<int,Konto> Konten;
+std::map<int,Transaktion> Transaktionen;
 };
 #endif

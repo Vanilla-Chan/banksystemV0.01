@@ -7,6 +7,13 @@ int mainmenu();
 void adminmenu();
 int login();
 int main(){
+
+	Banksystem BS;
+	BS.ladeBenutzerInMap(Benutzer("x","x","x","x","x"));
+	BS.speichereBenutzerInDatei();
+
+
+
 	cout << mainmenu();
 }
 

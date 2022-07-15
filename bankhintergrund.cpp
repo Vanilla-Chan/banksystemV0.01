@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
-
+#include <sstream>
 Benutzer::Benutzer(int ID, std::string iName, std::string iNachname,
 		std::string iTelefonnummer, std::string iAdresse,
 		std::string iGeburtsdatum) {
@@ -40,10 +40,23 @@ std::string Benutzer::getGeburtsdatum() {
 
 
 //banksystem
-void Banksystem::ladeBenutzerAusDatei() {
 
+Benutzer Banksystem::getBenutzer(int id){
+	int x = -1;
+	try {
+	  if (id > mBenutzer.size())
+	  {
+		  cout << "Benutzer nicht gefunden" << endl;
+		  throw x;
+
+	  }
+	}
+	catch (int x ) {
+		return Benutzer(0,"","","","","");
+		cout << "Exception Caught \n";
+	}
+	return mBenutzer.at(id);
 }
-
 
 void Banksystem::speichereBenutzerInDatei() {
 
@@ -71,6 +84,25 @@ void Banksystem::speichereBenutzerInDatei() {
 
 	}
 	outFile.close();
+
+}
+
+void Banksystem::ladeBenutzerAusDatei(){
+	ifstream inFile;
+	int id;
+	string line, name, nachname, telefonnummer, adresse, geburtsdatum;
+	inFile.open("benutzer.txt");
+	if(inFile.fail()){
+		cout << "konnte datei nicht oeffnen" << endl;
+	}else{
+		while(getline(inFile, line)){
+			istringstream stream(line);
+			if(!(stream >> id >> name >> nachname >> telefonnummer >> adresse >> geburtsdatum)){
+				throw runtime_error("invalid data");
+			}
+			ladeBenutzerInMap(Benutzer(id,name,nachname,telefonnummer,adresse,geburtsdatum));
+		}
+	}
 
 }
 

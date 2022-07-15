@@ -70,5 +70,10 @@ public:
 	void speichereTransaktionenInDatei();
 
 	void ladeBenutzerInMap(Benutzer);
+	void ladeKontoInMap(Konto);
+	void ladeTransaktionInMap(Transaktion);
+
+	Benutzer getBenutzer(int id);
+
 };
 #endif

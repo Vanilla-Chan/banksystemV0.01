@@ -91,5 +91,6 @@ public:
 	bool benutzerExistiert(std::string userName);
 	bool benutzerAktiv(int id);
 
+	Konto getKonto(int Kontonummer);
 };
 #endif

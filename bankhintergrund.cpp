@@ -221,7 +221,7 @@ void Banksystem::speichereKontosInDatei(){
 
 			//ueberpruefen ob Nutzer geloescht ist
 
-			if(mKonten.at(a).getKontonummer() != ""){
+			if(mKonten.at(a).getKontonummer() != 0){
 				outFile << mKonten.at(a).getKontonummer() << " ";
 				outFile << mKonten.at(a).getBenutzerID() << " ";
 				outFile << mKonten.at(a).getkontostand() << std::endl;
@@ -284,5 +284,4 @@ std::string Benutzer::getUsername() {
 
 std::string Benutzer::getPasswort() {
 }
-
 

@@ -11,6 +11,8 @@ int main(){
 	//BS.ladeBenutzerInMap(Benutzer(1,"jakob","hermanowski","110","berg.1","20.04.1997"));
 	//BS.speichereBenutzerInDatei();
 	BS.ladeBenutzerAusDatei();
+	BS.ladeKontosAusDatei();
+
 	BS.getBenutzer("test");
 	if(BS.benutzerAktiv(1)){
 		cout << BS.getBenutzer(1).getNachname();

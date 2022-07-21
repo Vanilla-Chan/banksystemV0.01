@@ -12,7 +12,8 @@ Benutzer::Benutzer(int ID, std::string iName, std::string iNachname,
 	this->telefonnummer = iTelefonnummer;
 	this->adresse = iAdresse;
 	this->geburtsdatum = iGeburtsdatum;
-
+	this->aktiv = true;
+	this->geloescht = true;
 }
 int Benutzer::getID() {
 	return this->benutzerID;
@@ -36,11 +37,19 @@ std::string Benutzer::getAdresse() {
 std::string Benutzer::getGeburtsdatum() {
     return this->geburtsdatum;
 }
+bool Benutzer::getGeloescht() {
+	return this->geloescht;
+}
+
+bool Benutzer::getAktiv() {
+	return this->aktiv;
+}
 
 
 
 //banksystem
-bool Banksystem::existiert(int id) {
+bool Banksystem::benutzerExistiert(int id) {
+
 	  if (id > mBenutzer.size())
 	  {
 		  return false;
@@ -48,6 +57,16 @@ bool Banksystem::existiert(int id) {
 		  return true;
 	  }
 }
+bool Banksystem::benutzerAktiv(int id) {
+	if(benutzerExistiert(id)){
+		if(mBenutzer.at(id).getAktiv()){
+			return true;
+		}
+
+	}
+	return false;
+}
+
 Benutzer Banksystem::getBenutzer(int id){
 	int x = -1;
 	try {
@@ -70,7 +89,7 @@ void Banksystem::speichereBenutzerInDatei() {
 	ofstream outFile;
 	outFile.open("benutzer.txt");
 	if(outFile.fail()){
-		cout << "date konnte nicht geoeffnet werden!" << endl;
+		cout << "Datei konnte nicht geoeffnet werden!" << endl;
 	}
 	else{
 		for(long long unsigned int a = 1; a < this->mBenutzer.size()+1; a++){
@@ -83,7 +102,7 @@ void Banksystem::speichereBenutzerInDatei() {
 				outFile << mBenutzer.at(a).getNachname() << " ";
 				outFile << mBenutzer.at(a).getTelefonnummer() << " ";
 				outFile << mBenutzer.at(a).getAdresse() << " ";
-				outFile << mBenutzer.at(a).getGeburtsdatum();
+				outFile << mBenutzer.at(a).getGeburtsdatum() << endl;
 
 			}else{}
 

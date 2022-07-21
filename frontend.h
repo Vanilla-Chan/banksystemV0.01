@@ -1,7 +1,7 @@
 #ifndef _FRONTEND_H_
 #define _FRONTEND_H_
 #include <iostream>
-int mainmenu();
+void mainmenu();
 void adminmenu();
 int login();
 class frontenduser{ //temporary to check function of login
@@ -25,7 +25,7 @@ public:
 		return admin;
 	}
 };
-inline int  mainmenu(){
+inline void mainmenu(){
 	int eingabe;
 	bool check = true;
 	do{
@@ -63,7 +63,6 @@ inline int  mainmenu(){
 	}
 	while(check);
 
-	return eingabe;
 }
 
 inline void adminmenu(){

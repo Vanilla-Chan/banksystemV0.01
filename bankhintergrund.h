@@ -6,9 +6,6 @@
 #include <map>
 #include <utility>
 
-
-using namespace std;
-
 class Benutzer{
 private:
   int benutzerID;
@@ -39,7 +36,8 @@ private:
   int benutzerID;
   float kontostand;
 public:
-  Konto(int iKontonummer,int iBenutzerID,float iKontostand);
+  Konto(int kontonummer,int benutzerID,float kontostand);
+  Konto(std::string kontonummer,std::string benutzerID,std::string kontostand);
   int getKontonummer();
   int getBenutzerID();
   float getkontostand();
@@ -53,10 +51,12 @@ private:
   int empfkontoID;
   float betrag;
   std::string verwendungszweck;
+  std::string text;
 public:
-  void ueberweisung(Konto& sender, Konto& empfaenger, float betrag);
-  void auszahlen(Konto&, float betrag);
-  void einzahlen(Konto&, float betrag);
+  Transaktion(Konto& sender,Konto& empfaenger, float betrag,std::string verwendungszweck);
+  void ueberweisung(Konto& sender, Konto& empfaenger, float betrag, std::string verwendungszweck);
+  void auszahlen(Konto& auskonto, float betrag);
+  void einzahlen(Konto& einkonto, float betrag);
 };
 
 
@@ -66,6 +66,7 @@ private:
 	std::map<int,Konto> mKonten;
 	std::map<int,Transaktion> mransaktionen;
 public:
+
 	void ladeBenutzerAusDatei();
 	void ladeKontosAusDatei();
 	void ladeTransaktionenAusDatei();

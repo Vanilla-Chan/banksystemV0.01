@@ -74,6 +74,6 @@ public:
 	void ladeTransaktionInMap(Transaktion);
 
 	Benutzer getBenutzer(int id);
-
+	bool existiert(int id);
 };
 #endif

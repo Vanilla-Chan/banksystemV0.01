@@ -14,7 +14,13 @@ int main(){
 	//BS.ladeBenutzerInMap(Benutzer(1,"jakob","hermanowski","110","berg.1","20.04.1997"));
 	//BS.speichereBenutzerInDatei();
 	BS.ladeBenutzerAusDatei();
-	cout << BS.getBenutzer(2).getNachname();
+	if(BS.existiert(4)){
+		cout << BS.getBenutzer(4).getNachname();
+	}else{
+		cout << "Nutzer existiert nicht!" << endl;
+	}
+
+
 
 	//cout << mainmenu();
 

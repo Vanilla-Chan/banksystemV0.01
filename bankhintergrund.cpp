@@ -40,7 +40,14 @@ std::string Benutzer::getGeburtsdatum() {
 
 
 //banksystem
-
+bool Banksystem::existiert(int id) {
+	  if (id > mBenutzer.size())
+	  {
+		  return false;
+	  }else{
+		  return true;
+	  }
+}
 Benutzer Banksystem::getBenutzer(int id){
 	int x = -1;
 	try {
@@ -109,3 +116,5 @@ void Banksystem::ladeBenutzerAusDatei(){
 void Banksystem::ladeBenutzerInMap(Benutzer benutzer) {
 	this->mBenutzer.insert(std::pair<int,Benutzer>(benutzer.getID(), benutzer));
 }
+
+

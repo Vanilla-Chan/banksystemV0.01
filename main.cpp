@@ -17,7 +17,7 @@ int main(){
 	}else{
 		cout << "Nutzer existiert nicht oder ist deaktiviert!" << endl;
 	}
-	cout << mainmenu();
+	mainmenu();
 
 
 }

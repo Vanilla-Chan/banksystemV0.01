@@ -5,23 +5,13 @@
 #include <cstdlib>
 
 using namespace std;
-
-
 int main(){
-<<<<<<< HEAD
 	cout << mainmenu();
-=======
-
 	Banksystem BS;
 	BS.ladeBenutzerInMap(Benutzer(1,"jakob","hermanowski","110","berg.1","20.04.1997"));
 	BS.speichereBenutzerInDatei();
 
-
-
 	//cout << mainmenu();
-
-
->>>>>>> 587fab4f2a7a4aab7aeb0ff2570133fbabcf5f71
 }
 /*
  * Original Implementation of Frontend

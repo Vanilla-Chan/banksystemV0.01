@@ -83,7 +83,6 @@ inline int login(){
 	std::string nutzer;
 	std::string pw;
 	int status = 1;
-	int i = 0;
 	std::cout << "Bitte melden Sie sich mit Ihren Nutzerdaten an:" << std::endl;
 		 std::cout << "Benutzername:";
 		 std::cin >> nutzer;

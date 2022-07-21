@@ -4,15 +4,18 @@ Teilnehmer
 
 Offene ToDos:
 
-Implementationsdatei bankhintergrund.cpp 
-Main Menu konzipieren und implementieren in eigener Methode 
-Admin Menu 
 Daten Einlesen aus Dateien und die Container damit füttern
 
-Daten in Dateien Ausgeben zum Speichern 
+
 Jakob 
 
-
+Daten in Dateien Ausgeben zum Speichern 
 
 Julian 
 Frontend Main und Adminmenü
+Format zum Einlesen 
+ID Vorname Nachname Telefonnummer Frankfurter Berg 3  Geburtsdatum 
+
+String von Adresse Leerzeichen ersetzten durch anderes Zeichen. 
+Frankfurter Berg 3 wird zu Frankfurter#berg#3 
+Geburtsdatum wird zu ddmmyyyy von dd.mm.yyyy

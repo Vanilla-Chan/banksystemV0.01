@@ -16,17 +16,23 @@ private:
   std::string geburtsdatum;
   bool geloescht;
   bool aktiv;
+  std::string username;
+  std::string passwort;
+  int admin;
 public:
-  Benutzer(int ID, std::string iName, std::string iNachname,std::string iTelefonnummer,std::string iAdresse, std::string iGeburtsdatum);
+  Benutzer(int ID, std::string iName, std::string iNachname,std::string iTelefonnummer,std::string iAdresse, std::string iGeburtsdatum, std::string iUsername,std::string iPasswort,int admin);
   int getID();
   std::string getVorname();
   std::string getNachname();
   std::string getTelefonnummer();
   std::string getAdresse();
   std::string getGeburtsdatum();
+  std::string getUsername();
+  std::string getPasswort();
   bool getGeloescht();
   bool getAktiv();
-
+  int getAdmin();
+  bool ueberpruefePasswort(std::string passwort);
 };
 
 
@@ -80,7 +86,10 @@ public:
 	void ladeTransaktionInMap(Transaktion);
 
 	Benutzer getBenutzer(int id);
+	Benutzer getBenutzer(std::string userName);
 	bool benutzerExistiert(int id);
+	bool benutzerExistiert(std::string userName);
 	bool benutzerAktiv(int id);
+
 };
 #endif

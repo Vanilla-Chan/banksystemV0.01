@@ -3,9 +3,7 @@
 #include <fstream>
 #include <string.h>
 #include <sstream>
-Benutzer::Benutzer(int ID, std::string iName, std::string iNachname,
-		std::string iTelefonnummer, std::string iAdresse,
-		std::string iGeburtsdatum) {
+Benutzer::Benutzer(int ID, std::string iName, std::string iNachname, std::string iTelefonnummer, std::string iAdresse,std::string iGeburtsdatum, std::string iUsername,std::string iPasswort,int admin ) {
 	this->benutzerID = ID;
 	this->vorname = iName;
 	this->nachname = iNachname;
@@ -14,6 +12,9 @@ Benutzer::Benutzer(int ID, std::string iName, std::string iNachname,
 	this->geburtsdatum = iGeburtsdatum;
 	this->aktiv = true;
 	this->geloescht = true;
+	this->username = iUsername;
+	this->passwort = iPasswort;
+	this->admin = admin;
 }
 int Benutzer::getID() {
 	return this->benutzerID;
@@ -113,10 +114,20 @@ void Banksystem::ladeBenutzerAusDatei(){
 				if(!(stream >> id >> name >> nachname >> telefonnummer >> adresse >> geburtsdatum)){
 					throw std::runtime_error("invalid data");
 				}
-				ladeBenutzerInMap(Benutzer(id,name,nachname,telefonnummer,adresse,geburtsdatum));
+				ladeBenutzerInMap(Benutzer(id,name,nachname,telefonnummer,adresse,geburtsdatum,"","",1));
 			}
 		}
 
+}
+
+
+bool Banksystem::benutzerAktiv(int id) {
+	if(benutzerExistiert(id)){
+		if(mBenutzer.at(id).getAktiv()){
+			return true;
+		}
+		return false;
+	}
 }
 
 void Banksystem::ladeKontosAusDatei(){
@@ -137,6 +148,7 @@ void Banksystem::ladeKontosAusDatei(){
 				ladeKontoInMap(Konto(kontonummer,benutzerID,kontostand));
 				}
 			}
+
 		}
 
 void Banksystem::ladeTransaktionenAusDatei(){
@@ -182,12 +194,22 @@ else{
 
 		}else{}
 
+
+	  }
 	}
 
 }
-outFile.close();
 
+Benutzer Banksystem::getBenutzer(std::string username){
+	std::cout << mBenutzer.at(1).getUsername();
+	for(int a = 1; a <= mBenutzer.size();a++){
+		if(username == mBenutzer.at(a).getUsername()){
+			return	mBenutzer.at(a);
+		}
+	}
+	return	mBenutzer.at(1);
 }
+
 void Banksystem::speichereKontosInDatei(){
 	std::ofstream outFile;
 	outFile.open("banksystemV0.01/konten.txt");
@@ -213,6 +235,7 @@ void Banksystem::speichereKontosInDatei(){
 
 }
 
+
 void Banksystem::speichereTransaktionenInDatei(){};
 
 
@@ -229,23 +252,22 @@ void Banksystem::ladeTransaktionInMap(Transaktion){};
 
 
 Benutzer Banksystem::getBenutzer(int id){
-  	int x = -1;
-  	try {
+
   	  if (id > mBenutzer.size())
   	  {
   		  std::cout << "Benutzer nicht gefunden" << std::endl;
-  		  throw x;
+
 
   	  }
-  	}
-  	catch (int x ) {
-  		return Benutzer(0,"","","","","");
-  		std::cout << "Exception Caught \n";
-  	}
+
+
   	return mBenutzer.at(id);
 }
 
+
+
 bool Banksystem::benutzerExistiert(int id) {
+
 
 	  if (id > mBenutzer.size())
 	  {
@@ -254,17 +276,13 @@ bool Banksystem::benutzerExistiert(int id) {
 		  return true;
 	  }
 }
-bool Banksystem::benutzerAktiv(int id) {
-	if(benutzerExistiert(id)){
-		if(mBenutzer.at(id).getAktiv()){
-			return true;
-		}
 
-	}
-	return false;
+
+std::string Benutzer::getUsername() {
+	return this->username;
 }
 
-
-
+std::string Benutzer::getPasswort() {
+}
 
 

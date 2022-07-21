@@ -1,8 +1,9 @@
 #include <iostream>
 #include "bankhintergrund.h"
-#include "frontend.h"
 #include <stdlib.h>
 #include <cstdlib>
+
+#include "frontend.h"
 
 using namespace std;
 int main(){
@@ -10,6 +11,7 @@ int main(){
 	//BS.ladeBenutzerInMap(Benutzer(1,"jakob","hermanowski","110","berg.1","20.04.1997"));
 	//BS.speichereBenutzerInDatei();
 	BS.ladeBenutzerAusDatei();
+	BS.getBenutzer("test");
 	if(BS.benutzerAktiv(1)){
 		cout << BS.getBenutzer(1).getNachname();
 	}else{

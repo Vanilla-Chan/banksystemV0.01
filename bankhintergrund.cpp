@@ -3,9 +3,7 @@
 #include <fstream>
 #include <string.h>
 #include <sstream>
-Benutzer::Benutzer(int ID, std::string iName, std::string iNachname,
-		std::string iTelefonnummer, std::string iAdresse,
-		std::string iGeburtsdatum) {
+Benutzer::Benutzer(int ID, std::string iName, std::string iNachname, std::string iTelefonnummer, std::string iAdresse,std::string iGeburtsdatum, std::string iUsername,std::string iPasswort,int admin ) {
 	this->benutzerID = ID;
 	this->vorname = iName;
 	this->nachname = iNachname;
@@ -14,6 +12,9 @@ Benutzer::Benutzer(int ID, std::string iName, std::string iNachname,
 	this->geburtsdatum = iGeburtsdatum;
 	this->aktiv = true;
 	this->geloescht = true;
+	this->username = iUsername;
+	this->passwort = iPasswort;
+	this->admin = admin;
 }
 int Benutzer::getID() {
 	return this->benutzerID;
@@ -57,6 +58,7 @@ bool Banksystem::benutzerExistiert(int id) {
 		  return true;
 	  }
 }
+
 bool Banksystem::benutzerAktiv(int id) {
 	if(benutzerExistiert(id)){
 		if(mBenutzer.at(id).getAktiv()){
@@ -78,12 +80,20 @@ Benutzer Banksystem::getBenutzer(int id){
 	  }
 	}
 	catch (int x ) {
-		return Benutzer(0,"","","","","");
+
 		cout << "Exception Caught \n";
 	}
 	return mBenutzer.at(id);
 }
-
+Benutzer Banksystem::getBenutzer(std::string username){
+	cout << mBenutzer.at(1).getUsername();
+	for(int a = 1; a <= mBenutzer.size();a++){
+		if(username == mBenutzer.at(a).getUsername()){
+			return	mBenutzer.at(a);
+		}
+	}
+	return	mBenutzer.at(-1);
+}
 void Banksystem::speichereBenutzerInDatei() {
 
 	ofstream outFile;
@@ -126,7 +136,9 @@ void Banksystem::ladeBenutzerAusDatei(){
 			if(!(stream >> id >> name >> nachname >> telefonnummer >> adresse >> geburtsdatum)){
 				throw runtime_error("invalid data");
 			}
-			ladeBenutzerInMap(Benutzer(id,name,nachname,telefonnummer,adresse,geburtsdatum));
+			ladeBenutzerInMap(Benutzer(id,name,nachname,telefonnummer,adresse,geburtsdatum,"test","",1));
+
+
 		}
 	}
 
@@ -136,4 +148,12 @@ void Banksystem::ladeBenutzerInMap(Benutzer benutzer) {
 	this->mBenutzer.insert(std::pair<int,Benutzer>(benutzer.getID(), benutzer));
 }
 
+std::string Benutzer::getUsername() {
+	return this->username;
+}
 
+std::string Benutzer::getPasswort() {
+}
+
+int Benutzer::getAdmin() {
+}

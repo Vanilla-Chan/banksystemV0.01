@@ -117,7 +117,7 @@ void Banksystem::ladeBenutzerAusDatei(){
 	ifstream inFile;
 	int id;
 	string line, name, nachname, telefonnummer, adresse, geburtsdatum;
-	inFile.open("benutzer.txt");
+	inFile.open("banksystemV0.01/benutzer.txt");
 	if(inFile.fail()){
 		cout << "konnte datei nicht oeffnen" << endl;
 	}else{

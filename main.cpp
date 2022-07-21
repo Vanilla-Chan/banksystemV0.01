@@ -6,9 +6,6 @@
 
 using namespace std;
 int main(){
-
-	cout << mainmenu();
-
 	Banksystem BS;
 	//BS.ladeBenutzerInMap(Benutzer(1,"jakob","hermanowski","110","berg.1","20.04.1997"));
 	//BS.speichereBenutzerInDatei();
@@ -18,6 +15,9 @@ int main(){
 	}else{
 		cout << "Nutzer existiert nicht oder ist deaktiviert!" << endl;
 	}
+	cout << mainmenu();
+
+
 }
 /*
  * Original Implementation of Frontend

@@ -124,7 +124,7 @@ void Banksystem::ladeKontosAusDatei(){
 	int kontonummer, benutzerID;
 	float kontostand;
 	std::string line;
-	inFile.open("banksystemV0.01/benutzer.txt");
+	inFile.open("banksystemV0.01/konten.txt");
 		if(inFile.fail()){
 			std::cout << "konnte Datei nicht oeffnen" << std::endl;
 		}
@@ -139,12 +139,31 @@ void Banksystem::ladeKontosAusDatei(){
 			}
 		}
 
-void Banksystem::ladeTransaktionenAusDatei(){}
+void Banksystem::ladeTransaktionenAusDatei(){
+//	std::ifstream inFile;
+//	int senderid,empfaengerid;
+//	std::string line, verwendungszweck;
+//	inFile.open("banksystemV0.01/transaktionen.txt");
+//		if(inFile.fail()){
+//			std::cout << "konnte Datei nicht oeffnen" << std::endl;
+//		}
+//		else{
+//			while(getline(inFile, line)){
+//				std::istringstream stream(line);
+//				if(!(stream >> id >> name >> nachname >> telefonnummer >> adresse >> geburtsdatum)){
+//					throw std::runtime_error("invalid data");
+//				}
+//				ladeBenutzerInMap(Benutzer(id,name,nachname,telefonnummer,adresse,geburtsdatum));
+//			}
+//		}
+//
+//}
+}
 
 void Banksystem::speichereBenutzerInDatei(){
 
 std::ofstream outFile;
-outFile.open("benutzer.txt");
+outFile.open("banksystemV0.01/benutzer.txt");
 if(outFile.fail()){
 	std::cout << "Datei konnte nicht geoeffnet werden!" << std::endl;
 }
@@ -169,8 +188,30 @@ else{
 outFile.close();
 
 }
-void Banksystem::speichereKontosInDatei(){};
+void Banksystem::speichereKontosInDatei(){
+	std::ofstream outFile;
+	outFile.open("banksystemV0.01/konten.txt");
+	if(outFile.fail()){
+		std::cout << "Datei konnte nicht geoeffnet werden!" << std::endl;
+	}
+	else{
+		for(long long unsigned int a = 1; a < this->mKonten.size()+1; a++){
 
+			//ueberpruefen ob Nutzer geloescht ist
+
+			if(mKonten.at(a).getKontonummer() != ""){
+				outFile << mKonten.at(a).getKontonummer() << " ";
+				outFile << mKonten.at(a).getBenutzerID() << " ";
+				outFile << mKonten.at(a).getkontostand() << std::endl;
+
+			}else{}
+
+		}
+
+	}
+	outFile.close();
+
+}
 
 void Banksystem::speichereTransaktionenInDatei(){};
 

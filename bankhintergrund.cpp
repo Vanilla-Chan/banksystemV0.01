@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
-
+#include <sstream>
 Benutzer::Benutzer(int ID, std::string iName, std::string iNachname,
 		std::string iTelefonnummer, std::string iAdresse,
 		std::string iGeburtsdatum) {
@@ -12,7 +12,8 @@ Benutzer::Benutzer(int ID, std::string iName, std::string iNachname,
 	this->telefonnummer = iTelefonnummer;
 	this->adresse = iAdresse;
 	this->geburtsdatum = iGeburtsdatum;
-
+	this->aktiv = true;
+	this->geloescht = true;
 }
 int Benutzer::getID() {
 	return this->benutzerID;
@@ -36,21 +37,59 @@ std::string Benutzer::getAdresse() {
 std::string Benutzer::getGeburtsdatum() {
     return this->geburtsdatum;
 }
+bool Benutzer::getGeloescht() {
+	return this->geloescht;
+}
+
+bool Benutzer::getAktiv() {
+	return this->aktiv;
+}
 
 
 
 //banksystem
-void Banksystem::ladeBenutzerAusDatei() {
+bool Banksystem::benutzerExistiert(int id) {
 
+	  if (id > mBenutzer.size())
+	  {
+		  return false;
+	  }else{
+		  return true;
+	  }
+}
+bool Banksystem::benutzerAktiv(int id) {
+	if(benutzerExistiert(id)){
+		if(mBenutzer.at(id).getAktiv()){
+			return true;
+		}
+
+	}
+	return false;
 }
 
+Benutzer Banksystem::getBenutzer(int id){
+	int x = -1;
+	try {
+	  if (id > mBenutzer.size())
+	  {
+		  cout << "Benutzer nicht gefunden" << endl;
+		  throw x;
+
+	  }
+	}
+	catch (int x ) {
+		return Benutzer(0,"","","","","");
+		cout << "Exception Caught \n";
+	}
+	return mBenutzer.at(id);
+}
 
 void Banksystem::speichereBenutzerInDatei() {
 
 	ofstream outFile;
 	outFile.open("benutzer.txt");
 	if(outFile.fail()){
-		cout << "date konnte nicht geoeffnet werden!" << endl;
+		cout << "Datei konnte nicht geoeffnet werden!" << endl;
 	}
 	else{
 		for(long long unsigned int a = 1; a < this->mBenutzer.size()+1; a++){
@@ -63,7 +102,7 @@ void Banksystem::speichereBenutzerInDatei() {
 				outFile << mBenutzer.at(a).getNachname() << " ";
 				outFile << mBenutzer.at(a).getTelefonnummer() << " ";
 				outFile << mBenutzer.at(a).getAdresse() << " ";
-				outFile << mBenutzer.at(a).getGeburtsdatum();
+				outFile << mBenutzer.at(a).getGeburtsdatum() << endl;
 
 			}else{}
 
@@ -74,6 +113,27 @@ void Banksystem::speichereBenutzerInDatei() {
 
 }
 
+void Banksystem::ladeBenutzerAusDatei(){
+	ifstream inFile;
+	int id;
+	string line, name, nachname, telefonnummer, adresse, geburtsdatum;
+	inFile.open("benutzer.txt");
+	if(inFile.fail()){
+		cout << "konnte datei nicht oeffnen" << endl;
+	}else{
+		while(getline(inFile, line)){
+			istringstream stream(line);
+			if(!(stream >> id >> name >> nachname >> telefonnummer >> adresse >> geburtsdatum)){
+				throw runtime_error("invalid data");
+			}
+			ladeBenutzerInMap(Benutzer(id,name,nachname,telefonnummer,adresse,geburtsdatum));
+		}
+	}
+
+}
+
 void Banksystem::ladeBenutzerInMap(Benutzer benutzer) {
 	this->mBenutzer.insert(std::pair<int,Benutzer>(benutzer.getID(), benutzer));
 }
+
+

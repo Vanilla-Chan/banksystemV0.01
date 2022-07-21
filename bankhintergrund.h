@@ -17,6 +17,8 @@ private:
   std::string telefonnummer;
   std::string adresse;
   std::string geburtsdatum;
+  bool geloescht;
+  bool aktiv;
 public:
   Benutzer(int ID, std::string iName, std::string iNachname,std::string iTelefonnummer,std::string iAdresse, std::string iGeburtsdatum);
   int getID();
@@ -25,6 +27,9 @@ public:
   std::string getTelefonnummer();
   std::string getAdresse();
   std::string getGeburtsdatum();
+  bool getGeloescht();
+  bool getAktiv();
+
 };
 
 
@@ -70,5 +75,11 @@ public:
 	void speichereTransaktionenInDatei();
 
 	void ladeBenutzerInMap(Benutzer);
+	void ladeKontoInMap(Konto);
+	void ladeTransaktionInMap(Transaktion);
+
+	Benutzer getBenutzer(int id);
+	bool benutzerExistiert(int id);
+	bool benutzerAktiv(int id);
 };
 #endif

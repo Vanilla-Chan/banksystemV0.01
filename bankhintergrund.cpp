@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string.h>
 #include <sstream>
-std::string readstring(std::string);
+std::string readstring(std::string input);
 Benutzer::Benutzer(int ID, std::string iName, std::string iNachname, std::string iTelefonnummer, std::string iAdresse,std::string iGeburtsdatum, std::string iUsername,std::string iPasswort,int admin ) {
 	this->benutzerID = ID;
 	this->vorname = iName;
@@ -353,11 +353,5 @@ std::string printstring(std::string input){
 	printable.replace(printable.find(" "), 2, "_");
 	return printable;
 }
-std::string readstring(std::string input){
-	std::string readable = input;
-	int index = readable.find(" ");
-	std::cout << index;
-	// readable.replace(index,1," ");
-	return readable;
-}
+
 

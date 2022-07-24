@@ -131,4 +131,5 @@ int geldautomat(){
 return 0;
 }
 
+
 #endif /* FRONTEND_H_ */

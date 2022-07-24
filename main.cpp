@@ -3,11 +3,12 @@
 #include <stdlib.h>
 #include <cstdlib>
 #include "frontend.h"
-
 #define ABORT cout << endl << "Abbruch"; return 0;
 using namespace std;
+string readstring(string input);
 int main(){
 	Banksystem BS;
+	string test = "" ;
 	//BS.ladeBenutzerInMap(Benutzer(1,"jakob","hermanowski","110","berg.1","20.04.1997"));
 	//BS.speichereBenutzerInDatei();
 	switch(mainmenu()){
@@ -15,7 +16,13 @@ int main(){
 		BS.ladeBenutzerAusDatei();
 		BS.ladeKontosAusDatei();
 		BS.ladeTransaktionenAusDatei();
-		cout << BS.getBenutzer(1).getAdresse();
+		//String konvertierung _ löschen um Ausgabe richtig zu machen
+		cout << "Vor konvertierung: " << BS.getBenutzer(1).getAdresse();
+		test = BS.getBenutzer(1).getAdresse();
+		//Sucht Unterstrich und ersetzt ihn durch ein leerzeichen Funktiniert nur bei einem Unterstrich
+		//test.replace(test.find("_"),1," ");
+		cout << "Nach Konvertierung: " << readstring(test);
+
 		cout << "Dateien geladen";
 		break;
 	case 2:
@@ -32,6 +39,18 @@ int main(){
 		ABORT
 	}
 
+}
+std::string readstring(std::string input){
+for(int i=0;i<input.size();i++){
+	switch (input[i]){
+	case '_':
+		input[i] = ' ';
+		break;
+	default:
+		break;
+	}
+}
+return input;
 }
 /*
  * Original Implementation of Frontend

@@ -79,6 +79,11 @@ private:
 	std::map<int,Konto> mKonten;
 	std::map<int,Transaktion> mTransaktionen;
 public:
+	void addbenutzer(Benutzer);
+	void clearbenutzer(int benutzerID);
+	void addKonto(Konto);
+	void clearKonto(int kontoID);
+
 	void ladeBenutzerAusDatei();
 	void ladeKontosAusDatei();
 	void ladeTransaktionenAusDatei();

@@ -124,7 +124,23 @@ int Transaktion::getTyp(){
 }
 
 //banksystem
-void Banksystem::ladeBenutzerAusDatei(){
+void Banksystem::addbenutzer(Benutzer benutzer){
+
+	mBenutzer.insert(std::pair<int,Benutzer>(benutzer.getID(),benutzer));
+	//mKonten.insert(std::pair<int,Benutzer>(Benutzer.
+
+	//(std::pair<int,Konto>(konto.getKontonummer(), konto));
+}
+void Banksystem::clearbenutzer(int benutzerID){
+	mBenutzer.erase(benutzerID);
+}
+void Banksystem::addKonto(Konto konto){
+	mKonten.insert(std::pair<int,Konto>(konto.getBenutzerID(),konto));
+}
+void Banksystem::clearKonto(int kontoID){
+	mKonten.erase(kontoID);
+}
+void Banksystem::Banksystem::ladeBenutzerAusDatei(){
 	std::ifstream inFile;
 	int id;
 	std::string line, name, nachname, telefonnummer, adresse, geburtsdatum;

@@ -33,18 +33,6 @@ int main(){
 	}
 
 }
-//std::string readstring(std::string input){
-//for(int i=0;i<input.size();i++){
-//	switch (input[i]){
-//	case '_':
-//		input[i] = ' ';
-//		break;
-//	default:
-//		break;
-//	}
-//}
-//return input;
-//}
 /*
  * Original Implementation of Frontend
  *

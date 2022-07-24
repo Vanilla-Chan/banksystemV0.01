@@ -58,11 +58,14 @@ private:
   int empfkontoID;
   float betrag;
   std::string verwendungszweck;
-  std::string text;
 public:
   Transaktion(int transaktionsid,int senderid,int empfaengerid, float betrag,std::string verwendungszweck);
   void ueberweisung(Konto& sender, Konto& empfaenger, float betrag, std::string verwendungszweck);
   int getTransaktionsid();
+  int getSendkontoid();
+  int getEmpfkontoid();
+  float getBetrag();
+  std::string getVerwendungszweck();
   void auszahlen(Konto& auskonto, float betrag);
   void einzahlen(Konto& einkonto, float betrag);
 };

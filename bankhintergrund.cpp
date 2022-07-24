@@ -102,6 +102,18 @@ void Transaktion::einzahlen(Konto& einkonto, float betrag){
 int Transaktion::getTransaktionsid(){
 	return transaktionsID;
 }
+int Transaktion::getSendkontoid(){
+	return this->sendkontoID;
+};
+int Transaktion::getEmpfkontoid(){
+	return this->empfkontoID;
+};
+float Transaktion::getBetrag(){
+	return this->betrag;
+};
+std::string Transaktion::getVerwendungszweck(){
+	return this->verwendungszweck;
+};
 
 //banksystem
 void Banksystem::ladeBenutzerAusDatei(){
@@ -241,7 +253,32 @@ void Banksystem::speichereKontosInDatei(){
 }
 
 
-void Banksystem::speichereTransaktionenInDatei(){}
+void Banksystem::speichereTransaktionenInDatei(){
+	std::ofstream outFile;
+	outFile.open("banksystemV0.01/konten.txt");
+	if(outFile.fail()){
+		std::cout << "Datei konnte nicht geoeffnet werden!" << std::endl;
+	}
+	else{
+		for(long long unsigned int a = 1; a < this->mTransaktionen.size()+1; a++){
+
+			//ueberpruefen ob Nutzer geloescht ist
+
+			if(mTransaktionen.at(a).getTransaktionsid() != 0){
+				outFile << mTransaktionen.at(a).getTransaktionsid() << " "
+						<< mTransaktionen.at(a).getSendkontoid() << " "
+						<< mTransaktionen.at(a).getEmpfkontoid() << " "
+						<< mTransaktionen.at(a).getBetrag() << " "
+						<< mTransaktionen.at(a).getVerwendungszweck() << std::endl;
+
+			}else{}
+
+		}
+
+	}
+	outFile.close();
+
+}
 
 
 void Banksystem::ladeBenutzerInMap(Benutzer benutzer) {

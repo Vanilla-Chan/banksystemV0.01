@@ -66,7 +66,6 @@ int mainmenu(){
 	}
 	}
 	while(check);
-
 }
 
 inline void adminmenu(){

@@ -3,7 +3,9 @@
 #include <fstream>
 #include <string.h>
 #include <sstream>
-std::string readstring(std::string input);
+//std::string printstring(std::string input);
+//std::string readstring(std::string input);
+
 Benutzer::Benutzer(int ID, std::string iName, std::string iNachname, std::string iTelefonnummer, std::string iAdresse,std::string iGeburtsdatum, std::string iUsername,std::string iPasswort,int admin ) {
 	this->benutzerID = ID;
 	this->vorname = iName;
@@ -349,10 +351,17 @@ std::string Benutzer::getPasswort() {
 }
 // New Stuff to make Strings readable after Saving and Reading from file not working yet
 std::string printstring(std::string input){
-	std::string printable = input;
-	printable.replace(printable.find(" "), 2, "_");
-	return printable;
-}
+	for(int i=0;i<input.size();i++){
+		switch (input[i]){
+		case ' ':
+			input[i] = '_';
+			break;
+		default:
+			break;
+		}
+	}
+	return input;
+	}
 std::string readstring(std::string input){
 for(int i=0;i<input.size();i++){
 	switch (input[i]){

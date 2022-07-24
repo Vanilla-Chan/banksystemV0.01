@@ -24,6 +24,8 @@ int main(){
 		cout << "Nach Konvertierung: " << readstring(test);
 
 		cout << "Dateien geladen";
+		test ="peter Maier";
+		cout << "Vorher" << test << "Nachher:" << printstring(test) << endl;
 		break;
 	case 2:
 		BS.getBenutzer("test");

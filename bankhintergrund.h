@@ -101,4 +101,6 @@ public:
 	Konto getKonto(int Kontonummer);
 	Transaktion getTransaktion(int transaktionsid);
 };
+std::string printstring(std::string input);
+std::string readstring(std::string input);
 #endif

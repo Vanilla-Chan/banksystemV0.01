@@ -15,6 +15,7 @@ int main(){
 		BS.ladeBenutzerAusDatei();
 		BS.ladeKontosAusDatei();
 		BS.ladeTransaktionenAusDatei();
+		cout << BS.getBenutzer(1).getAdresse();
 		cout << "Dateien geladen";
 		break;
 	case 2:

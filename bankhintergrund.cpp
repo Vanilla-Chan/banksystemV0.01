@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string.h>
 #include <sstream>
+std::string readstring(std::string);
 Benutzer::Benutzer(int ID, std::string iName, std::string iNachname, std::string iTelefonnummer, std::string iAdresse,std::string iGeburtsdatum, std::string iUsername,std::string iPasswort,int admin ) {
 	this->benutzerID = ID;
 	this->vorname = iName;
@@ -32,6 +33,7 @@ std::string Benutzer::getTelefonnummer() {
 }
 
 std::string Benutzer::getAdresse() {
+
 	return this->adresse;
 }
 
@@ -345,5 +347,17 @@ std::string Benutzer::getUsername() {
 std::string Benutzer::getPasswort() {
 	return passwort;
 }
-
+// New Stuff to make Strings readable after Saving and Reading from file not working yet
+std::string printstring(std::string input){
+	std::string printable = input;
+	printable.replace(printable.find(" "), 2, "_");
+	return printable;
+}
+std::string readstring(std::string input){
+	std::string readable = input;
+	int index = readable.find(" ");
+	std::cout << index;
+	// readable.replace(index,1," ");
+	return readable;
+}
 

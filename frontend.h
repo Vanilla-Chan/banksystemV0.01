@@ -4,6 +4,7 @@
 int mainmenu();
 void adminmenu();
 int login();
+int geldautomat();
 class frontenduser{ //temporary to check function of login
 private:
 	std::string username;
@@ -53,6 +54,7 @@ int mainmenu(){
 			break;
 		case 2:
 			return 2;
+			break;
 		case 0:
 			adminmenu();
 			break;
@@ -124,6 +126,9 @@ inline int login(){
 				 std::exit(1);
 				 return 0;
 	 }
+int geldautomat(){
 
+return 0;
+}
 
 #endif /* FRONTEND_H_ */

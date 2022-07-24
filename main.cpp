@@ -2,15 +2,14 @@
 #include "bankhintergrund.h"
 #include <stdlib.h>
 #include <cstdlib>
-
 #include "frontend.h"
 
+#define ABORT cout << endl << "Abbruch"; return 0;
 using namespace std;
 int main(){
 	Banksystem BS;
 	//BS.ladeBenutzerInMap(Benutzer(1,"jakob","hermanowski","110","berg.1","20.04.1997"));
 	//BS.speichereBenutzerInDatei();
-
 	switch(mainmenu()){
 	case 1:
 		BS.ladeBenutzerAusDatei();
@@ -25,10 +24,11 @@ int main(){
 			}else{
 				cout << "Nutzer existiert nicht oder ist deaktiviert!" << endl;
 			}
+			mainmenu();
 			break;
 
 	default:
-		return 0;
+		ABORT
 	}
 
 }

@@ -4,15 +4,9 @@ Teilnehmer
 
 Offene ToDos:
 
-Daten Einlesen aus Dateien und die Container damit füttern
-
-
 Jakob 
 
-Daten in Dateien Ausgeben zum Speichern 
-
 Julian 
-Frontend Main und Adminmenü
 Format zum Einlesen 
 ID Vorname Nachname Telefonnummer Frankfurter Berg 3  Geburtsdatum 
 

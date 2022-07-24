@@ -321,6 +321,18 @@ bool Banksystem::benutzerExistiert(int id) {
 	  }
 }
 
+Transaktion Banksystem::getTransaktion(int transaktionsid){
+	if (transaktionsid > mTransaktionen.size())
+	  	  {
+	  		  std::cout << "Transaktion nicht gefunden" << std::endl;
+
+
+	  	  }
+
+
+	  	return mTransaktionen.at(transaktionsid);
+
+};
 
 std::string Benutzer::getUsername() {
 	return username;

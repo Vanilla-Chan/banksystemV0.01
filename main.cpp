@@ -13,6 +13,8 @@ int main(){
 	BS.ladeBenutzerAusDatei();
 	BS.ladeKontosAusDatei();
 	BS.ladeTransaktionenAusDatei();
+	Transaktion temptrans = BS.getTransaktion(1);
+	cout << temptrans.getSendkontoid() << temptrans.getVerwendungszweck() << endl << endl;
 
 	BS.getBenutzer("test");
 	if(BS.benutzerAktiv(1)){

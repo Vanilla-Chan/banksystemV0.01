@@ -97,5 +97,6 @@ public:
 	bool benutzerAktiv(int id);
 
 	Konto getKonto(int Kontonummer);
+	Transaktion getTransaktion(int transaktionsid);
 };
 #endif

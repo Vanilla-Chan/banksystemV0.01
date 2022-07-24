@@ -16,16 +16,7 @@ int main(){
 		BS.ladeBenutzerAusDatei();
 		BS.ladeKontosAusDatei();
 		BS.ladeTransaktionenAusDatei();
-		//String konvertierung _ löschen um Ausgabe richtig zu machen
-		cout << "Vor konvertierung: " << BS.getBenutzer(1).getAdresse();
-		test = BS.getBenutzer(1).getAdresse();
-		//Sucht Unterstrich und ersetzt ihn durch ein leerzeichen Funktiniert nur bei einem Unterstrich
-		//test.replace(test.find("_"),1," ");
-		cout << "Nach Konvertierung: " << readstring(test);
-
-		cout << "Dateien geladen";
-		test ="peter Maier";
-		cout << "Vorher" << test << "Nachher:" << printstring(test) << endl;
+		cout << "Nach Konvertierung " << BS.getBenutzer(1).getAdresse();
 		break;
 	case 2:
 		BS.getBenutzer("test");

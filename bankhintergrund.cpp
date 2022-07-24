@@ -138,6 +138,7 @@ void Banksystem::ladeBenutzerAusDatei(){
 				if(!(stream >> id >> name >> nachname >> telefonnummer >> adresse >> geburtsdatum)){
 					throw std::runtime_error("invalid data");
 				}
+				adresse = readstring(adresse);
 				ladeBenutzerInMap(Benutzer(id,name,nachname,telefonnummer,adresse,geburtsdatum,"","",1));
 			}
 		}
@@ -214,7 +215,7 @@ else{
 			outFile << mBenutzer.at(a).getVorname() << " ";
 			outFile << mBenutzer.at(a).getNachname() << " ";
 			outFile << mBenutzer.at(a).getTelefonnummer() << " ";
-			outFile << mBenutzer.at(a).getAdresse() << " ";
+			outFile << printstring(mBenutzer.at(a).getAdresse()) << " ";
 			outFile << mBenutzer.at(a).getGeburtsdatum() << std::endl;
 
 		}else{}

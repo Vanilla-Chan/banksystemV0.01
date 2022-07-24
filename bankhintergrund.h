@@ -79,7 +79,6 @@ private:
 	std::map<int,Konto> mKonten;
 	std::map<int,Transaktion> mTransaktionen;
 public:
-
 	void ladeBenutzerAusDatei();
 	void ladeKontosAusDatei();
 	void ladeTransaktionenAusDatei();

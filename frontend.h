@@ -1,7 +1,7 @@
 #ifndef _FRONTEND_H_
 #define _FRONTEND_H_
 #include <iostream>
-void mainmenu();
+int mainmenu();
 void adminmenu();
 int login();
 class frontenduser{ //temporary to check function of login
@@ -25,14 +25,14 @@ public:
 		return admin;
 	}
 };
-inline void mainmenu(){
+int mainmenu(){
 	int eingabe;
 	bool check = true;
 	do{
 	std::cout << "=======Banksystem V0.01======" << std::endl
 		 << "==========Hauptmenü=========="<< std::endl
-		 << "1)Erster Menuepunkt" << std::endl
-		 << "2)Zweiter Menuepunkt" << std::endl
+		 << "1)Lade Dateien" << std::endl
+		 << "2)Testbenutzer laden" << std::endl
 		 << "3)Dritter Menuepunkt" << std::endl
 		 << "4)Vierter Menuepunkt" << std::endl
 		 << "5)Fuenfter Menuepunkt" << std::endl
@@ -49,8 +49,10 @@ inline void mainmenu(){
 		int status = login();
 		switch(status){
 		case 1:
-			mainmenu();
+			return 1;
 			break;
+		case 2:
+			return 2;
 		case 0:
 			adminmenu();
 			break;

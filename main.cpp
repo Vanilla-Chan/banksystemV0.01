@@ -10,20 +10,26 @@ int main(){
 	Banksystem BS;
 	//BS.ladeBenutzerInMap(Benutzer(1,"jakob","hermanowski","110","berg.1","20.04.1997"));
 	//BS.speichereBenutzerInDatei();
-	BS.ladeBenutzerAusDatei();
-	BS.ladeKontosAusDatei();
-	BS.ladeTransaktionenAusDatei();
-	Transaktion temptrans = BS.getTransaktion(1);
-	cout << temptrans.getSendkontoid() << temptrans.getVerwendungszweck() << endl << endl;
 
-	BS.getBenutzer("test");
-	if(BS.benutzerAktiv(1)){
-		cout << BS.getBenutzer(1).getNachname();
-	}else{
-		cout << "Nutzer existiert nicht oder ist deaktiviert!" << endl;
+	switch(mainmenu()){
+	case 1:
+		BS.ladeBenutzerAusDatei();
+		BS.ladeKontosAusDatei();
+		BS.ladeTransaktionenAusDatei();
+		cout << "Dateien geladen";
+		break;
+	case 2:
+		BS.getBenutzer("test");
+			if(BS.benutzerAktiv(1)){
+				cout << BS.getBenutzer(1).getNachname();
+			}else{
+				cout << "Nutzer existiert nicht oder ist deaktiviert!" << endl;
+			}
+			break;
+
+	default:
+		return 0;
 	}
-	mainmenu();
-
 
 }
 /*

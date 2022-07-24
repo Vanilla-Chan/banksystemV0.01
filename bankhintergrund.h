@@ -53,14 +53,16 @@ public:
 
 class Transaktion{
 private:
+  int transaktionsID;
   int sendkontoID;
   int empfkontoID;
   float betrag;
   std::string verwendungszweck;
   std::string text;
 public:
-  Transaktion(Konto& sender,Konto& empfaenger, float betrag,std::string verwendungszweck);
+  Transaktion(int transaktionsid,int senderid,int empfaengerid, float betrag,std::string verwendungszweck);
   void ueberweisung(Konto& sender, Konto& empfaenger, float betrag, std::string verwendungszweck);
+  int getTransaktionsid();
   void auszahlen(Konto& auskonto, float betrag);
   void einzahlen(Konto& einkonto, float betrag);
 };
@@ -70,7 +72,7 @@ class Banksystem{
 private:
 	std::map<int,Benutzer> mBenutzer;
 	std::map<int,Konto> mKonten;
-	std::map<int,Transaktion> mransaktionen;
+	std::map<int,Transaktion> mTransaktionen;
 public:
 
 	void ladeBenutzerAusDatei();

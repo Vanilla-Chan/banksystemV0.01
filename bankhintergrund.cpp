@@ -74,9 +74,10 @@ void Konto::setKontostand(float kontostand){
 
 
 //Transaktion
-Transaktion::Transaktion(Konto& sender,Konto& empfaenger, float betrag,std::string verwendungszweck){
-	this->sendkontoID = sender.getBenutzerID();
-	this->empfkontoID = empfaenger.getBenutzerID();
+Transaktion::Transaktion(int transaktionsID, int sendkontoID,int empfkontoID, float betrag,std::string verwendungszweck){
+	this->transaktionsID = transaktionsID;
+	this->sendkontoID = sendkontoID;
+	this->empfkontoID = empfkontoID;
 	this->betrag = betrag;
 	this->verwendungszweck = verwendungszweck;
 }
@@ -97,6 +98,9 @@ void Transaktion::einzahlen(Konto& einkonto, float betrag){
 	  std::cout << "Sie haben " << betrag << "€ eingezahlt" << std::endl;
 	  einkonto.setKontostand(einkonto.getkontostand()+betrag);
 	  std::cout << "Ihr neuer Kontostand beträgt" << einkonto.getkontostand() << "€" << std::endl;
+}
+int Transaktion::getTransaktionsid(){
+	return transaktionsID;
 }
 
 //banksystem
@@ -152,25 +156,26 @@ void Banksystem::ladeKontosAusDatei(){
 		}
 
 void Banksystem::ladeTransaktionenAusDatei(){
-//	std::ifstream inFile;
-//	int senderid,empfaengerid;
-//	std::string line, verwendungszweck;
-//	inFile.open("banksystemV0.01/transaktionen.txt");
-//		if(inFile.fail()){
-//			std::cout << "konnte Datei nicht oeffnen" << std::endl;
-//		}
-//		else{
-//			while(getline(inFile, line)){
-//				std::istringstream stream(line);
-//				if(!(stream >> id >> name >> nachname >> telefonnummer >> adresse >> geburtsdatum)){
-//					throw std::runtime_error("invalid data");
-//				}
-//				ladeBenutzerInMap(Benutzer(id,name,nachname,telefonnummer,adresse,geburtsdatum));
-//			}
-//		}
-//
-//}
+	std::ifstream inFile;
+	int transaktionsid, senderid,empfaengerid;
+	float betrag;
+	std::string line, verwendungszweck;
+	inFile.open("banksystemV0.01/transaktionen.txt");
+		if(inFile.fail()){
+			std::cout << "konnte Datei nicht oeffnen" << std::endl;
+		}
+		else{
+			while(getline(inFile, line)){
+				std::istringstream stream(line);
+				if(!(stream >> transaktionsid >> senderid >> empfaengerid >> betrag >> verwendungszweck)){
+					throw std::runtime_error("invalid data");
+				}
+				ladeTransaktionInMap(Transaktion(transaktionsid, senderid,empfaengerid,betrag,verwendungszweck));
+			}
+		}
+
 }
+
 
 void Banksystem::speichereBenutzerInDatei(){
 
@@ -236,7 +241,7 @@ void Banksystem::speichereKontosInDatei(){
 }
 
 
-void Banksystem::speichereTransaktionenInDatei(){};
+void Banksystem::speichereTransaktionenInDatei(){}
 
 
 void Banksystem::ladeBenutzerInMap(Benutzer benutzer) {
@@ -248,7 +253,9 @@ void Banksystem::ladeKontoInMap(Konto konto){
 };
 
 
-void Banksystem::ladeTransaktionInMap(Transaktion){};
+void Banksystem::ladeTransaktionInMap(Transaktion transaktion){
+	this->mTransaktionen.insert(std::pair<int,Transaktion>(transaktion.getTransaktionsid(),transaktion));
+};
 
 
 Benutzer Banksystem::getBenutzer(int id){
@@ -279,9 +286,11 @@ bool Banksystem::benutzerExistiert(int id) {
 
 
 std::string Benutzer::getUsername() {
-	return this->username;
+	return username;
 }
 
 std::string Benutzer::getPasswort() {
+	return passwort;
 }
+
 

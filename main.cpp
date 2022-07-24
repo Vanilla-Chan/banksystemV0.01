@@ -12,6 +12,7 @@ int main(){
 	//BS.speichereBenutzerInDatei();
 	BS.ladeBenutzerAusDatei();
 	BS.ladeKontosAusDatei();
+	BS.ladeTransaktionenAusDatei();
 
 	BS.getBenutzer("test");
 	if(BS.benutzerAktiv(1)){

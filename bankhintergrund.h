@@ -54,17 +54,19 @@ public:
 class Transaktion{
 private:
   int transaktionsID;
+  int typ; // 1 einzalung //2 Auszahlung // 3 ueberweisung
   int sendkontoID;
   int empfkontoID;
   float betrag;
   std::string verwendungszweck;
 public:
-  Transaktion(int transaktionsid,int senderid,int empfaengerid, float betrag,std::string verwendungszweck);
+  Transaktion(int transaktionsid,int senderid,int empfaengerid, float betrag,std::string verwendungszweck,int typ);
   void ueberweisung(Konto& sender, Konto& empfaenger, float betrag, std::string verwendungszweck);
   int getTransaktionsid();
   int getSendkontoid();
   int getEmpfkontoid();
   float getBetrag();
+  int getTyp();
   std::string getVerwendungszweck();
   void auszahlen(Konto& auskonto, float betrag);
   void einzahlen(Konto& einkonto, float betrag);

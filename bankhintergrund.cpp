@@ -74,7 +74,8 @@ void Konto::setKontostand(float kontostand){
 
 
 //Transaktion
-Transaktion::Transaktion(int transaktionsID, int sendkontoID,int empfkontoID, float betrag,std::string verwendungszweck){
+Transaktion::Transaktion(int transaktionsID, int sendkontoID,int empfkontoID, float betrag,std::string verwendungszweck,int typ){
+	this->typ = typ;
 	this->transaktionsID = transaktionsID;
 	this->sendkontoID = sendkontoID;
 	this->empfkontoID = empfkontoID;
@@ -114,6 +115,9 @@ float Transaktion::getBetrag(){
 std::string Transaktion::getVerwendungszweck(){
 	return this->verwendungszweck;
 };
+int Transaktion::getTyp(){
+	return this->typ;
+}
 
 //banksystem
 void Banksystem::ladeBenutzerAusDatei(){
@@ -169,7 +173,7 @@ void Banksystem::ladeKontosAusDatei(){
 
 void Banksystem::ladeTransaktionenAusDatei(){
 	std::ifstream inFile;
-	int transaktionsid, senderid,empfaengerid;
+	int transaktionsid, senderid,empfaengerid,typ;
 	float betrag;
 	std::string line, verwendungszweck;
 	inFile.open("banksystemV0.01/transaktionen.txt");
@@ -179,10 +183,10 @@ void Banksystem::ladeTransaktionenAusDatei(){
 		else{
 			while(getline(inFile, line)){
 				std::istringstream stream(line);
-				if(!(stream >> transaktionsid >> senderid >> empfaengerid >> betrag >> verwendungszweck)){
+				if(!(stream >> transaktionsid >> senderid >> empfaengerid >> betrag >> verwendungszweck >> typ)){
 					throw std::runtime_error("invalid data");
 				}
-				ladeTransaktionInMap(Transaktion(transaktionsid, senderid,empfaengerid,betrag,verwendungszweck));
+				ladeTransaktionInMap(Transaktion(transaktionsid, senderid,empfaengerid,betrag,verwendungszweck,typ));
 			}
 		}
 
